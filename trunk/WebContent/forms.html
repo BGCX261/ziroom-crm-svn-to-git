@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>自如友家后台管理系统</title>
+	<link rel="stylesheet" type="text/css" href="css/960.css"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/text.css"/>
+	<link rel="stylesheet" type="text/css" href="css/blue.css"/>
+	<link type="text/css" href="css/smoothness/ui.css"/>
+	<link type="text/css" href="js/wysiwyg/jquery.wysiwyg.css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/wysiwyg/jquery.wysiwyg.js"></script>
+	<script type="text/javascript" src="js/blend/jquery.blend.js"></script>
+	<script type="text/javascript" src="js/ui.core.js"></script>
+	<script type="text/javascript" src="js/ui.sortable.js"></script>    
+	<script type="text/javascript" src="js/ui.dialog.js"></script>
+	<script type="text/javascript" src="js/effects.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#wysiwyg').wysiwyg();
+		});
+	</script>
+	
+	<!--[if IE6]>
+	<link rel="stylesheet" type="text/css" href="css/iefix.css" />
+	<![endif]-->
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="css/iefix.css"/>
+	<script src="js/pngfix.js"></script>
+	<script>
+		DD_belatedPNG.fix('#menu ul li a span span');
+	</script>    
+	<![endif]-->
+</head>
+
+<body>
+	<!-- WRAPPER START 页面部分的开始 整个页面的第一个div， -->
+	<div class="container_16" id="wrapper">		
+	
+		<!-- HIDDEN COLOR CHANGER  隐藏的主题切换DIV -->
+		<div style="position:relative;">
+			<div id="colorchanger">
+				<a href="dashboard_red.html"><span class="redtheme">红色</span></a>
+				<a href="dashboard.html"><span class="bluetheme">蓝色</span></a>
+				<a href="dashboard_green.html"><span class="greentheme">绿色</span></a>
+			</div>
+		</div>
+	
+		<!--LOGO 自如友家的Logo图片-->
+		<div class="grid_8" id="logo">
+			<img src="./images/logo.jpg" height="60" alt="" style="vertical-align: middle;"/>自如友家
+		</div>
+		
+		<div class="grid_8">
+			<!-- USER TOOLS START 用户工具条-->
+			<div id="user_tools">
+				<span>
+					<a href="#" class="mail">(1)</a> 
+					欢迎 郭昕  |  
+					<a class="dropdown" href="#">改变主题</a>  |  
+					<a href="#">退出</a>
+				</span>
+			</div>
+		</div>
+	
+		<div class="grid_16" id="header">
+			<!-- MENU START  菜单的开始-->
+			<div id="menu">
+				<ul class="group" id="menu_group_main">
+					<li class="item first" id="one">
+						<a href="dashboard.html" class="main"><span class="outer"><span class="inner dashboard">房源管理</span></span></a></li>
+					<li class="item middle" id="two">
+						<a href="forms.html" class="main current"><span class="outer"><span class="inner content">合同管理</span></span></a></li>
+					<li class="item middle" id="three">
+						<a href="#" class="main"><span class="outer"><span class="inner users">用户管理</span></span></a></li>
+					<li class="item middle" id="four">
+						<a href="#" class="main"><span class="outer"><span class="inner reports">报告管理</span></span></a></li>
+					<li class="item middle" id="five">
+						<a href="#" class="main"><span class="outer"><span class="inner media_library">媒体管理</span></span></a></li>        
+					<li class="item middle" id="six">
+						<a href="#" class="main"><span class="outer"><span class="inner event_manager">事件管理</span></span></a></li>        
+					<li class="item middle" id="seven">
+						<a href="#" class="main"><span class="outer"><span class="inner newsletter">内容管理</span></span></a></li>        
+					<li class="item last" id="eight">
+						<a href="#" class="main"><span class="outer"><span class="inner settings">系统设置</span></span></a></li>        
+				</ul>
+			</div>
+			<!-- MENU END -->
+		</div>
+	
+	
+		<div class="grid_16">
+			<!-- TABS START 二级导航的TAB标签的内容-->
+			<div id="tabs">
+				<div class="container">
+					<ul>
+						<li><a href="dashboard.html><span>房源信息录入</span></a></li>
+						<li><a href="#" class="current"><span>房源装修</span></a></li>
+						<li><a href="#"><span>房源配置</span></a></li>
+						<li><a href="#"><span>房源保洁</span></a></li>
+						<li><a href="#"><span>房源预定</span></a></li>
+						<li><a href="#"><span>房源出租</span></a></li>
+						<li><a href="#" class="more"><span>房源信息列表</span></a></li>            
+					</ul>
+				</div>
+			</div>
+		<!-- TABS END -->    
+		</div>
+	
+		<!-- HIDDEN SUBMENU START -->
+		<div class="grid_16" id="hidden_submenu">
+			<ul class="more_menu">
+				<li><a href="#">More link 1</a></li>
+				<li><a href="#">More link 2</a></li>  
+				<li><a href="#">More link 3</a></li>    
+				<li><a href="#">More link 4</a></li>                               
+			</ul>
+			<ul class="more_menu">
+				<li><a href="#">More link 5</a></li>
+				<li><a href="#">More link 6</a></li>  
+				<li><a href="#">More link 7</a></li> 
+				<li><a href="#">More link 8</a></li>                                  
+			</ul>
+			<ul class="more_menu">
+				<li><a href="#">More link 9</a></li>
+				<li><a href="#">More link 10</a></li>  
+				<li><a href="#">More link 11</a></li>  
+				<li><a href="#">More link 12</a></li>                                 
+			</ul>            
+		</div>
+		<!-- HIDDEN SUBMENU END -->  
+
+		<!-- CONTENT START 页面的内容开始部分， Main Content-->
+		<div class="grid_16" id="content">
+			
+			<!-- CONTENT TITLE 内容的主题-->
+			<div class="grid_9">
+				<h1 class="content_edit">房源入库</h1>
+			</div>
+			
+			
+			<!-- CONTENT TITLE RIGHT BOX 内容标题的右侧功能项， 向右对齐， 这边可以采用事件信息提醒的方式来定-->
+			<div class="grid_6" id="eventbox">
+				<a href="#" class="inline_tip">这个位置的内容展现是用来给当前的操作用户一些小提示，小帮助</a>
+			</div>
+			
+			<!-- 这边是用来隐藏或者显示一些内容使用-->
+			<div class="clear">
+			</div>
+			
+			<!--  TEXT CONTENT OR ANY OTHER CONTENT START  文本内容或者是其他内容的开始   -->
+			<div class="grid_15" id="textcontent">
+				<h2>自如友家的帮助信息</h2>
+				<p> 
+				大家好，我叫“自如”，诞生于2011年的春天，是专为需要租住生活的您提供贴心服务的“魔力之星”，“自如”网站则是我与您进行交流、为您解忧的在线平台
+
+				大家别看我刚刚诞生，可是我早已练就了第一种魔力——“友家”
+
+				“自如•友家”是我专门为追求高品质合租生活的朋友提供帮助的魔力，被施了这种魔力的房间，会让住在这里的朋友切身体会到高品质的、与以往完全不同的租住体验
+
+				下面给您介绍一下“自如•友家”房间的奇妙之处
+
+				“租客认证”，让您拥有高质量的合住伙伴和生活中的朋友
+
+				“一客一锁”，让您安心的工作、学习和生活
+
+				“免费宽带”，让您感受网上冲浪无极限
+
+				“宜家家具”，让您领略北欧简约时尚之风
+
+				“品牌家电”，让您体验现代生活的便捷
+
+				“自如”网站，让您时刻与我在一起，零距离的交流
+
+				除此之外，
+
+				一个便捷包，可以解除您搬家之后的辛劳
+
+				一个废纸桶，放您的房间不再凌乱
+
+				一组壁画，为您的生活增添几许色彩
+
+				一副窗帘，给您空间带来一丝温馨，一份慵懒
+
+				一块留言板，方便了您与合住伙伴的交流
+
+			……
+
+				如果您选择了“自如•友家”，我还会施展魔法为您提供不可思议的租住服务
+
+				每月一次的保洁、及时响应的维修、每年进行安全排查等等等等
+
+				同时您还会拥有一位经验丰富、待人诚恳、热情的“自如管家”，他会在您的租住期间提供全方位“管家”式服务，彻底解除您的后顾之忧
+
+				“自如•友家”的魔力还不止这些，需要追求品质、热爱生活的您一点点的体会、一点点的品味
+
+			如果您对“自如•友家”感兴趣，可以登录网站（www.ziroom.com.cn），在这里您一定可以找到心仪的房间，甚至心仪的合住伙伴，我也会在这里一直等待着您。
+
+
+				随着我慢慢长大，我也会修炼更多的魔法，为您提供更多的服务，
+
+			到那时，相信您的租住生活将会焕然一新——“自由如你，自在如你，自信如你”
+
+				好了，就到这吧，休息，休息一下。。。。。。. 
+			</p>
+			
+			
+			<!-- Begin Form 这里是我们常用的表单的处理部分。   -->
+			<form id="edit" action="" method="post">
+				
+				<label>标题</label>
+				<input type="text" class="smallInput wide" />
+				<!--WYSIWYG Editor is linked to the textarea with id: #wysiwyg-->
+				<label>编辑内容文本框</label>
+				<textarea id="wysiwyg" class="smallInput wide" rows="7" cols="30"></textarea>
+				<label>下拉选择框</label>
+				<select class="smallInput">
+					<option>选项一</option>
+					<option>选项二</option>
+					<option>选项三</option>            
+				</select>
+				<label>可以使用如下的格式按钮来提交信息</label>
+			   <!-- BUTTONS -->
+				<a class="button"><span>提交按钮样式一</span></a>
+				<a class="button_grey"><span>提交按钮样式二</span></a>
+				<a class="button_ok"><span>更新信息按钮</span></a>
+				<a class="button_notok"><span>删除记录按钮</span></a>
+				<a class="button_grey_round"><span>倒圆角按钮</span></a>
+			</form>
+			<br />
+			<!-- End Form -->
+			
+			<div class="clear"></div><br />
+			
+			<!--NOTIFICATION MESSAGES-->
+				<p class="info" id="success"><span class="info_inner">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span></p>
+				<p class="info" id="error"><span class="info_inner">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span></p>
+				<p class="info" id="warning"><span class="info_inner">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span></p>
+				<p class="info" id="info"><span class="info_inner">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span></p>    
+			</div>
+			
+			<div class="clear"> 
+			</div>
+		<!-- END CONTENT  页面所有内容的结束-->    
+		</div>
+	
+	
+		<div class="clear"> </div>
+
+		<!-- This contains the hidden content for inline calls -->
+		<div class='hidden'>
+			<div id="inline_example1" title="这是一个模态窗口" style='padding:10px; background:#fff;'>
+				<p><strong>当前内容是显示一个隐藏的元素</strong></p>
+							
+				<p>这些都是Jquery UI的文本框</p>
+			</div>
+		</div>
+	
+		<!--Second hidden element called from the tip message right of the title  这是显示一些页面的提醒信息-->
+		<div class='hidden'>
+			<div id='inline_example2' title="这是模态窗口" style='padding:10px; background:#fff;'>
+				<p><strong>显示当前页面的一些提醒信息</strong></p>
+			</div>
+		</div>
+		
+	</div>
+	<!-- WRAPPER END 整个文档内容的结束-->
+	
+	
+	
+	
+	
+	
+	
+	<!-- FOOTER START -->
+	<div class="container_16" id="footer">
+		这是整个文档的页脚
+	</div>
+	<!-- FOOTER END -->
+</body>
+</html>

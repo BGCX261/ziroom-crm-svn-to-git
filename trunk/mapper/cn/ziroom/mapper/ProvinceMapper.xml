@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.ProvinceMapper" >
+  <resultMap id="Province" type="cn.ziroom.mapper.Province" >
+    <id column="PROVINCE_ID" property="provinceId" jdbcType="INTEGER" />
+    <result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+    <result column="PROVINCE_SHORT" property="provinceShort" jdbcType="VARCHAR" />
+    <result column="PROVINCE_HEADER" property="provinceHeader" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    PROVINCE_ID, PROVINCE_NAME, PROVINCE_SHORT, PROVINCE_HEADER
+  </sql>
+  <select id="selectList" resultMap="Province" parameterType="cn.ziroom.mapper.Province" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_province
+  </select>
+  <select id="selectById" resultMap="Province" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from t_province
+    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_province
+    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.Province" useGeneratedKeys="true" keyProperty="provinceId" >
+    insert into t_province
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="provinceId != null" >
+        PROVINCE_ID,
+      </if>
+      <if test="provinceName != null" >
+        PROVINCE_NAME,
+      </if>
+      <if test="provinceShort != null" >
+        PROVINCE_SHORT,
+      </if>
+      <if test="provinceHeader != null" >
+        PROVINCE_HEADER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceShort != null" >
+        #{provinceShort,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceHeader != null" >
+        #{provinceHeader,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.Province" resultType="java.lang.Integer" >
+    select count(*) from t_province
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.Province" >
+    update t_province
+    <set >
+      <if test="provinceName != null" >
+        PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceShort != null" >
+        PROVINCE_SHORT = #{provinceShort,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceHeader != null" >
+        PROVINCE_HEADER = #{provinceHeader,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROVINCE_ID = #{provinceId,jdbcType=INTEGER}
+  </update>
+</mapper>

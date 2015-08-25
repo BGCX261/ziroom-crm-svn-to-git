@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<!-- 
+	<typeAliases>
+		<typeAlias alias="Dept" type="com.bhms.module.datasource.hr.mapper.Dept" />
+		<typeAlias alias="Person" type="com.bhms.module.datasource.hr.mapper.Person" />
+		<typeAlias alias="Privileges" type="com.bhms.module.users.privileges.mapper.Privileges" />
+		<typeAlias alias="Users" type="com.bhms.module.users.users.mapper.Users" />
+		<typeAlias alias="Roles" type="com.bhms.module.users.users.mapper.Roles" />
+		<typeAlias alias="Organization" type="com.bhms.module.users.org.mapper.Organization" />
+		<typeAlias alias="Group" type="com.bhms.module.users.org.mapper.Group" />
+		<typeAlias alias="Dict" type="com.bhms.module.resources.dictionary.mapper.Dict" />
+		<typeAlias alias="DictValues" type="com.bhms.module.resources.dictionary.mapper.DictValues" />
+		<typeAlias alias="Estates" type="com.bhms.module.resources.village.mapper.Estates" />
+		<typeAlias alias="Business" type="com.bhms.module.resources.village.mapper.Business" />
+		<typeAlias alias="City" type="com.bhms.module.resources.village.mapper.City" />
+		<typeAlias alias="District" type="com.bhms.module.resources.village.mapper.District" />
+		<typeAlias alias="Cycle" type="com.bhms.module.resources.village.mapper.Cycle" />
+		<typeAlias alias="CycleFace" type="com.bhms.module.resources.village.mapper.CycleFace" />
+		<typeAlias alias="Subway" type="com.bhms.module.resources.village.mapper.Subway" />
+		<typeAlias alias="SubwayStation" type="com.bhms.module.resources.village.mapper.SubwayStation" />
+		<typeAlias alias="House" type="com.bhms.module.houses.receive.mapper.House" />
+		<typeAlias alias="Room" type="com.bhms.module.houses.receive.mapper.Room" />
+		<typeAlias alias="OtherRoom" type="com.bhms.module.houses.receive.mapper.OtherRoom" />
+	</typeAliases>
+	 -->
+	<plugins>
+		<plugin interceptor="com.sunshulin.mybatis.SqlUpdateLogInterceptor" />
+		<plugin interceptor="com.sunshulin.mybatis.SqlQueryLogInterceptor" />
+	</plugins>
+</configuration>

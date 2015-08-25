@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.CircleMapper" >
+  <resultMap id="Circle" type="cn.ziroom.mapper.Circle" >
+    <id column="CIRCLE_ID" property="circleId" jdbcType="INTEGER" />
+    <result column="CITY_ID" property="cityId" jdbcType="INTEGER" />
+    <result column="CIRCLE_NAME" property="circleName" jdbcType="VARCHAR" />
+    <result column="CIRCLE_CODE" property="circleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    CIRCLE_ID, CITY_ID, CIRCLE_NAME, CIRCLE_CODE
+  </sql>
+  <select id="selectList" resultMap="Circle" parameterType="cn.ziroom.mapper.Circle" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_circle
+  </select>
+  <select id="selectById" resultMap="Circle" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from t_circle
+    where CIRCLE_ID = #{circleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_circle
+    where CIRCLE_ID = #{circleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.Circle" useGeneratedKeys="true" keyProperty="circleId" >
+    insert into t_circle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="circleId != null" >
+        CIRCLE_ID,
+      </if>
+      <if test="cityId != null" >
+        CITY_ID,
+      </if>
+      <if test="circleName != null" >
+        CIRCLE_NAME,
+      </if>
+      <if test="circleCode != null" >
+        CIRCLE_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="circleId != null" >
+        #{circleId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="circleName != null" >
+        #{circleName,jdbcType=VARCHAR},
+      </if>
+      <if test="circleCode != null" >
+        #{circleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.Circle" resultType="java.lang.Integer" >
+    select count(*) from t_circle
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.Circle" >
+    update t_circle
+    <set >
+      <if test="cityId != null" >
+        CITY_ID = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="circleName != null" >
+        CIRCLE_NAME = #{circleName,jdbcType=VARCHAR},
+      </if>
+      <if test="circleCode != null" >
+        CIRCLE_CODE = #{circleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CIRCLE_ID = #{circleId,jdbcType=INTEGER}
+  </update>
+</mapper>

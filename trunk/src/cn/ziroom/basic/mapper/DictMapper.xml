@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.basic.mapper.DictMapper" >
+  <resultMap type="cn.ziroom.basic.mapper.Dict" id="Dict">
+  	<result column="DICT_TYPE" property="dictType" jdbcType="VARCHAR" />
+  	<collection property="dictList" ofType="cn.ziroom.basic.mapper.Dict" javaType="ArrayList" resultMap="DictValues" />
+  </resultMap>
+  <resultMap id="DictValues" type="cn.ziroom.basic.mapper.Dict" >
+    <id column="DICT_ID" property="dictId" jdbcType="INTEGER" />
+    <result column="DICT_TYPE" property="dictType" jdbcType="VARCHAR" />
+    <result column="DICT_NAME" property="dictName" jdbcType="VARCHAR" />
+    <result column="DICT_VALUE" property="dictValue" jdbcType="VARCHAR" />
+    <result column="DICT_ORDER" property="dictOrder" jdbcType="VARCHAR" />
+    <result column="DICT_STATUS" property="dictStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    DICT_ID, DICT_TYPE, DICT_NAME, DICT_VALUE, DICT_ORDER, DICT_STATUS
+  </sql>
+  <select id="selectList" resultMap="Dict" >
+    select
+    <include refid="column" />
+    from T_DICT where DICT_STATUS = 'Y'
+  </select>
+  <select id="selectById" resultMap="Dict" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from T_DICT
+    where DICT_ID = #{dictId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from T_DICT
+    where DICT_ID = #{dictId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.basic.mapper.Dict" useGeneratedKeys="true" keyProperty="dictId" >
+    insert into T_DICT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dictId != null" >
+        DICT_ID,
+      </if>
+      <if test="dictType != null" >
+        DICT_TYPE,
+      </if>
+      <if test="dictName != null" >
+        DICT_NAME,
+      </if>
+      <if test="dictValue != null" >
+        DICT_VALUE,
+      </if>
+      <if test="dictOrder != null" >
+        DICT_ORDER,
+      </if>
+      <if test="dictStatus != null" >
+        DICT_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dictId != null" >
+        #{dictId,jdbcType=INTEGER},
+      </if>
+      <if test="dictType != null" >
+        #{dictType,jdbcType=VARCHAR},
+      </if>
+      <if test="dictName != null" >
+        #{dictName,jdbcType=VARCHAR},
+      </if>
+      <if test="dictValue != null" >
+        #{dictValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOrder != null" >
+        #{dictOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="dictStatus != null" >
+        #{dictStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="cn.ziroom.basic.mapper.Dict" >
+    update T_DICT
+    <set >
+      <if test="dictType != null" >
+        DICT_TYPE = #{dictType,jdbcType=VARCHAR},
+      </if>
+      <if test="dictName != null" >
+        DICT_NAME = #{dictName,jdbcType=VARCHAR},
+      </if>
+      <if test="dictValue != null" >
+        DICT_VALUE = #{dictValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOrder != null" >
+        DICT_ORDER = #{dictOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="dictStatus != null" >
+        DICT_STATUS = #{dictStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DICT_ID = #{dictId,jdbcType=INTEGER}
+  </update>
+</mapper>

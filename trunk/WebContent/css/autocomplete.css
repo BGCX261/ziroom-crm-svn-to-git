@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+.selectPage {
+    background-color: white;
+    border: 1px solid black;
+    overflow: hidden;
+    padding: 0;
+    z-index: 99999;
+}
+.selectPage ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.selectPage li {
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    overflow: hidden;
+    padding: 2px 5px;
+}
+.li_odd {
+    background-color: #EEEEEE;
+}
+.li_over {
+	background-color: #0A246A;
+	color: white;
+}

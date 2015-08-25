@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//OpenSymphony Group//XWork Validator 1.0//EN" 
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="buildingNumber">
+		<field-validator type="requiredstring">
+			<message>房屋编号不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">8</param>
+			<param name="minLength">8</param>
+			<param name="trim">true</param>
+			<message><![CDATA[ 房屋编号必须输入8位字符 ]]></message>
+		</field-validator>
+	</field>
+</validators>

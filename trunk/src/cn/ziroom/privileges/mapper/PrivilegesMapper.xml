@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.privileges.mapper.PrivilegesMapper">
+	<resultMap id="map" type="cn.ziroom.privileges.mapper.Privileges">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="privilege_code" property="privilege_code" jdbcType="VARCHAR" />
+		<result column="privilege_name" property="privilege_name" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="parent_code" property="parent_code" jdbcType="VARCHAR" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="is_leaf" property="is_leaf" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="columnList">
+		id, privilege_code, privilege_name, url, parent_code, path, is_leaf
+  	</sql>
+  	<!-- select -->
+	<select id="selectByParentCode" resultMap="map" parameterType="cn.ziroom.privileges.mapper.Privileges">
+		select 
+		<include refid="columnList" />
+		from t_privileges
+		<where>
+			<choose>
+				<when test='parent_code != null and parent_code != ""'>
+					and parent_code = #{parent_code,jdbcType=VARCHAR}
+				</when>
+				<otherwise>
+					parent_code is null
+				</otherwise>
+			</choose>
+		</where>
+		order by privilege_code
+	</select>
+</mapper>

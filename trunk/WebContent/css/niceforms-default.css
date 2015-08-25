@@ -1,0 +1,40 @@
+fieldset {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F2F2E6;
+    border-color: #FFFFFF #666661 #666661 #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 36px;
+    margin-top:10px;
+    padding: 10px;
+}
+legend {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #BFBF30;
+    border-color: #E5E5C3 #505014 #505014 #E5E5C3;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    font: bold 17px/21px Calibri,Arial,Helvetica,sans-serif;
+    margin: -25px 0 0 0px;
+    padding: 0 10px;
+}
+input, textarea, select {
+    font: 12px/12px Arial,Helvetica,sans-serif;
+    padding: 0;
+}
+.tableform tr{
+	height: 30px;
+}
+.tableform{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}

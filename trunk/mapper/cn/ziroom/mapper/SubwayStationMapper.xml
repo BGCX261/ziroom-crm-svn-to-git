@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.SubwayStationMapper" >
+  <resultMap id="SubwayStation" type="cn.ziroom.mapper.SubwayStation" >
+    <id column="STATION_ID" property="stationId" jdbcType="INTEGER" />
+    <result column="SUBWAY_ID" property="subwayId" jdbcType="INTEGER" />
+    <result column="STATION_NAME" property="stationName" jdbcType="VARCHAR" />
+    <result column="STATION_CODE" property="stationCode" jdbcType="VARCHAR" />
+    <result column="STATION_DESC" property="stationDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    STATION_ID, SUBWAY_ID, STATION_NAME, STATION_CODE, STATION_DESC
+  </sql>
+  <select id="selectList" resultMap="SubwayStation" parameterType="cn.ziroom.mapper.SubwayStation" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_subway_station
+  </select>
+  <select id="selectById" resultMap="SubwayStation" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from t_subway_station
+    where STATION_ID = #{stationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_subway_station
+    where STATION_ID = #{stationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.SubwayStation" useGeneratedKeys="true" keyProperty="stationId" >
+    insert into t_subway_station
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stationId != null" >
+        STATION_ID,
+      </if>
+      <if test="subwayId != null" >
+        SUBWAY_ID,
+      </if>
+      <if test="stationName != null" >
+        STATION_NAME,
+      </if>
+      <if test="stationCode != null" >
+        STATION_CODE,
+      </if>
+      <if test="stationDesc != null" >
+        STATION_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stationId != null" >
+        #{stationId,jdbcType=INTEGER},
+      </if>
+      <if test="subwayId != null" >
+        #{subwayId,jdbcType=INTEGER},
+      </if>
+      <if test="stationName != null" >
+        #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="stationCode != null" >
+        #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stationDesc != null" >
+        #{stationDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.SubwayStation" resultType="java.lang.Integer" >
+    select count(*) from t_subway_station
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.SubwayStation" >
+    update t_subway_station
+    <set >
+      <if test="subwayId != null" >
+        SUBWAY_ID = #{subwayId,jdbcType=INTEGER},
+      </if>
+      <if test="stationName != null" >
+        STATION_NAME = #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="stationCode != null" >
+        STATION_CODE = #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stationDesc != null" >
+        STATION_DESC = #{stationDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATION_ID = #{stationId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.CityMapper" >
+  <resultMap id="City" type="cn.ziroom.mapper.City" >
+    <id column="CITY_ID" property="cityId" jdbcType="INTEGER" />
+    <result column="PROVINCE_ID" property="provinceId" jdbcType="INTEGER" />
+    <result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+    <result column="CITY_PINYIN" property="cityPinyin" jdbcType="VARCHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    CITY_ID, PROVINCE_ID, CITY_NAME, CITY_PINYIN, CITY_CODE
+  </sql>
+  <select id="selectList" resultMap="City" parameterType="cn.ziroom.mapper.City" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_city
+  </select>
+  <select id="selectById" resultMap="City" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from t_city
+    where CITY_ID = #{cityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_city
+    where CITY_ID = #{cityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.City" useGeneratedKeys="true" keyProperty="cityId" >
+    insert into t_city
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cityId != null" >
+        CITY_ID,
+      </if>
+      <if test="provinceId != null" >
+        PROVINCE_ID,
+      </if>
+      <if test="cityName != null" >
+        CITY_NAME,
+      </if>
+      <if test="cityPinyin != null" >
+        CITY_PINYIN,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityPinyin != null" >
+        #{cityPinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.City" resultType="java.lang.Integer" >
+    select count(*) from t_city
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.City" >
+    update t_city
+    <set >
+      <if test="provinceId != null" >
+        PROVINCE_ID = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        CITY_NAME = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityPinyin != null" >
+        CITY_PINYIN = #{cityPinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CITY_ID = #{cityId,jdbcType=INTEGER}
+  </update>
+</mapper>

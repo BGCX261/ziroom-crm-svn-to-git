@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 房屋开发流程请求处理 -->
+	<package name="building" extends="action-default">
+		<action name="buildingEditPage">
+			<result>/WEB-INF/ziroom/building/searchBuilding.jsp</result>
+		</action>
+		<action name="test">
+			<result>/WEB-INF/ziroom/building/buildingEditPage.jsp</result>
+		</action>
+		<action name="developmentHouse" class="buildingAction" method="developmentHouse"/>
+		<action name="developmentProcess" class="buildingAction" method="developmentProcess"/>
+		<action name="editBuilding" class="buildingAction" method="editBuilding"/>
+		<action name="searchProcess" class="buildingAction" method="searchProcess">
+			<result>/WEB-INF/ziroom/building/searchProcess.jsp</result>
+		</action>
+		<action name="findBuilding" class="buildingAction" method="findBuilding">
+			<result>/WEB-INF/ziroom/building/findBuilding.jsp</result>
+		</action>
+		<action name="searchBuilding" class="buildingAction" method="searchBuilding"/>
+	</package>
+</struts>

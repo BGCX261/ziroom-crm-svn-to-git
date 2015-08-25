@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.BuildingProcessMapper" >
+  <resultMap id="BuildingProcess" type="cn.ziroom.mapper.BuildingProcess" >
+    <id column="BUILDING_PROCESS_ID" property="buildingProcessId" jdbcType="INTEGER" />
+    <result column="BUILDING_ID" property="buildingId" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PROCESS_TYPE" property="processType" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="ENT_TIME" property="entTime" jdbcType="TIMESTAMP" />
+    <result column="PROCESS_STATUS" property="processStatus" jdbcType="VARCHAR" />
+    <result column="PROCESS_DESC" property="processDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    BUILDING_PROCESS_ID, BUILDING_ID, USER_ID, USERNAME, PROCESS_TYPE, START_TIME, ENT_TIME, 
+    PROCESS_STATUS, PROCESS_DESC
+  </sql>
+  <select id="selectList" resultMap="BuildingProcess" parameterType="cn.ziroom.mapper.BuildingProcess" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_building_process
+  </select>
+  <select id="selectById" resultMap="BuildingProcess" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    from t_building_process
+    where BUILDING_PROCESS_ID = #{buildingProcessId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_building_process
+    where BUILDING_PROCESS_ID = #{buildingProcessId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.BuildingProcess" useGeneratedKeys="true" keyProperty="buildingProcessId" >
+    insert into t_building_process
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buildingProcessId != null" >
+        BUILDING_PROCESS_ID,
+      </if>
+      <if test="buildingId != null" >
+        BUILDING_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="processType != null" >
+        PROCESS_TYPE,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="entTime != null" >
+        ENT_TIME,
+      </if>
+      <if test="processStatus != null" >
+        PROCESS_STATUS,
+      </if>
+      <if test="processDesc != null" >
+        PROCESS_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buildingProcessId != null" >
+        #{buildingProcessId,jdbcType=INTEGER},
+      </if>
+      <if test="buildingId != null" >
+        #{buildingId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="processType != null" >
+        #{processType,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entTime != null" >
+        #{entTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processStatus != null" >
+        #{processStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="processDesc != null" >
+        #{processDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.BuildingProcess" resultType="java.lang.Integer" >
+    select count(*) from t_building_process
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.BuildingProcess" >
+    update t_building_process
+    <set >
+      <if test="buildingId != null" >
+        BUILDING_ID = #{buildingId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="processType != null" >
+        PROCESS_TYPE = #{processType,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entTime != null" >
+        ENT_TIME = #{entTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processStatus != null" >
+        PROCESS_STATUS = #{processStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="processDesc != null" >
+        PROCESS_DESC = #{processDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUILDING_PROCESS_ID = #{buildingProcessId,jdbcType=INTEGER}
+  </update>
+</mapper>

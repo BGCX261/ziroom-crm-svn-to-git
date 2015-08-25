@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.BuildingMapper" >
+  <resultMap id="Building" type="cn.ziroom.mapper.Building" >
+    <id column="BUILDING_ID" property="buildingId" jdbcType="INTEGER" />
+    <result column="BUILDING_NUMBER" property="buildingNumber" jdbcType="VARCHAR" />
+    <result column="BUILDING_CODE" property="buildingCode" jdbcType="VARCHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="BUSSNESS_CODE" property="bussnessCode" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="INTEGER" />
+    <result column="FLOOR" property="floor" jdbcType="INTEGER" />
+    <result column="TOTAL_FLOOR" property="totalFloor" jdbcType="INTEGER" />
+    <result column="BUILDING_CERTIFICATE" property="buildingCertificate" jdbcType="VARCHAR" />
+    <result column="BUILDING_TYPE" property="buildingType" jdbcType="VARCHAR" />
+    <result column="ELEVATOR" property="elevator" jdbcType="VARCHAR" />
+    <result column="BUILDING_AREA" property="buildingArea" jdbcType="REAL" />
+    <result column="USE_AREA" property="useArea" jdbcType="REAL" />
+    <result column="HEATING" property="heating" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+    <result column="ORIENTATION" property="orientation" jdbcType="VARCHAR" />
+    <result column="EXECUTIVE_ADDRESS" property="executiveAddress" jdbcType="VARCHAR" />
+    <result column="COOKROOM_AMOUNT" property="cookroomAmount" jdbcType="INTEGER" />
+    <result column="PROVIDE_CODE" property="provideCode" jdbcType="VARCHAR" />
+    <result column="PROPERTY_ADDRESS" property="propertyAddress" jdbcType="VARCHAR" />
+    <result column="BUILDING_LEVEL" property="buildingLevel" jdbcType="VARCHAR" />
+    <result column="BALCONY_AMOUNT" property="balconyAmount" jdbcType="INTEGER" />
+    <result column="BEDROOM_AMOUNT" property="bedroomAmount" jdbcType="INTEGER" />
+    <result column="BUILDING_FEATURE" property="buildingFeature" jdbcType="VARCHAR" />
+    <result column="BUILDING_STRUCTURE" property="buildingStructure" jdbcType="VARCHAR" />
+    <result column="GARDEN_AMOUNT" property="gardenAmount" jdbcType="INTEGER" />
+    <result column="DISTRICT_CODE" property="districtCode" jdbcType="VARCHAR" />
+    <result column="BUILDING_STATUS" property="buildingStatus" jdbcType="VARCHAR" />
+    <result column="PARLOR_AMOUNT" property="parlorAmount" jdbcType="INTEGER" />
+    <result column="TOILET_AMOUNT" property="toiletAmount" jdbcType="INTEGER" />
+    <result column="HOUSE_NUMBER" property="houseNumber" jdbcType="VARCHAR" />
+    <result column="TERRACE_AMOUNT" property="terraceAmount" jdbcType="INTEGER" />
+    <result column="DECORATE_TYPE" property="decorateType" jdbcType="VARCHAR" />
+    <result column="EXTENT_ITEM" property="extentItem" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    BUILDING_ID, BUILDING_NUMBER, BUILDING_CODE, CITY_CODE, BUSSNESS_CODE, CUSTOMER_ID, 
+    FLOOR, TOTAL_FLOOR, BUILDING_CERTIFICATE, BUILDING_TYPE, ELEVATOR, BUILDING_AREA, 
+    USE_AREA, HEATING, UNIT, ORIENTATION, EXECUTIVE_ADDRESS, COOKROOM_AMOUNT, PROVIDE_CODE, 
+    PROPERTY_ADDRESS, BUILDING_LEVEL, BALCONY_AMOUNT, BEDROOM_AMOUNT, BUILDING_FEATURE, 
+    BUILDING_STRUCTURE, GARDEN_AMOUNT, DISTRICT_CODE, BUILDING_STATUS, PARLOR_AMOUNT, 
+    TOILET_AMOUNT, HOUSE_NUMBER, TERRACE_AMOUNT, DECORATE_TYPE
+  </sql>
+  <sql id="blob_column" >
+    EXTENT_ITEM
+  </sql>
+  <select id="selectList" resultMap="Building" parameterType="cn.ziroom.mapper.Building" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_building 
+    
+    limit #{currentPage},#{line}
+  </select>
+  <select id="selectById" resultMap="Building" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    ,
+    <include refid="blob_column" />
+    from t_building
+    where BUILDING_ID = #{buildingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_building
+    where BUILDING_ID = #{buildingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.Building" useGeneratedKeys="true" keyProperty="buildingId" >
+    insert into t_building
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buildingId != null" >
+        BUILDING_ID,
+      </if>
+      <if test="buildingNumber != null" >
+        BUILDING_NUMBER,
+      </if>
+      <if test="buildingCode != null" >
+        BUILDING_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="bussnessCode != null" >
+        BUSSNESS_CODE,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="floor != null" >
+        FLOOR,
+      </if>
+      <if test="totalFloor != null" >
+        TOTAL_FLOOR,
+      </if>
+      <if test="buildingCertificate != null" >
+        BUILDING_CERTIFICATE,
+      </if>
+      <if test="buildingType != null" >
+        BUILDING_TYPE,
+      </if>
+      <if test="elevator != null" >
+        ELEVATOR,
+      </if>
+      <if test="buildingArea != null" >
+        BUILDING_AREA,
+      </if>
+      <if test="useArea != null" >
+        USE_AREA,
+      </if>
+      <if test="heating != null" >
+        HEATING,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+      <if test="orientation != null" >
+        ORIENTATION,
+      </if>
+      <if test="executiveAddress != null" >
+        EXECUTIVE_ADDRESS,
+      </if>
+      <if test="cookroomAmount != null" >
+        COOKROOM_AMOUNT,
+      </if>
+      <if test="provideCode != null" >
+        PROVIDE_CODE,
+      </if>
+      <if test="propertyAddress != null" >
+        PROPERTY_ADDRESS,
+      </if>
+      <if test="buildingLevel != null" >
+        BUILDING_LEVEL,
+      </if>
+      <if test="balconyAmount != null" >
+        BALCONY_AMOUNT,
+      </if>
+      <if test="bedroomAmount != null" >
+        BEDROOM_AMOUNT,
+      </if>
+      <if test="buildingFeature != null" >
+        BUILDING_FEATURE,
+      </if>
+      <if test="buildingStructure != null" >
+        BUILDING_STRUCTURE,
+      </if>
+      <if test="gardenAmount != null" >
+        GARDEN_AMOUNT,
+      </if>
+      <if test="districtCode != null" >
+        DISTRICT_CODE,
+      </if>
+      <if test="buildingStatus != null" >
+        BUILDING_STATUS,
+      </if>
+      <if test="parlorAmount != null" >
+        PARLOR_AMOUNT,
+      </if>
+      <if test="toiletAmount != null" >
+        TOILET_AMOUNT,
+      </if>
+      <if test="houseNumber != null" >
+        HOUSE_NUMBER,
+      </if>
+      <if test="terraceAmount != null" >
+        TERRACE_AMOUNT,
+      </if>
+      <if test="decorateType != null" >
+        DECORATE_TYPE,
+      </if>
+      <if test="extentItem != null" >
+        EXTENT_ITEM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buildingId != null" >
+        #{buildingId,jdbcType=INTEGER},
+      </if>
+      <if test="buildingNumber != null" >
+        #{buildingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null" >
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bussnessCode != null" >
+        #{bussnessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="totalFloor != null" >
+        #{totalFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingCertificate != null" >
+        #{buildingCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null" >
+        #{buildingType,jdbcType=VARCHAR},
+      </if>
+      <if test="elevator != null" >
+        #{elevator,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingArea != null" >
+        #{buildingArea,jdbcType=REAL},
+      </if>
+      <if test="useArea != null" >
+        #{useArea,jdbcType=REAL},
+      </if>
+      <if test="heating != null" >
+        #{heating,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null" >
+        #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="executiveAddress != null" >
+        #{executiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cookroomAmount != null" >
+        #{cookroomAmount,jdbcType=INTEGER},
+      </if>
+      <if test="provideCode != null" >
+        #{provideCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyAddress != null" >
+        #{propertyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingLevel != null" >
+        #{buildingLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="balconyAmount != null" >
+        #{balconyAmount,jdbcType=INTEGER},
+      </if>
+      <if test="bedroomAmount != null" >
+        #{bedroomAmount,jdbcType=INTEGER},
+      </if>
+      <if test="buildingFeature != null" >
+        #{buildingFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStructure != null" >
+        #{buildingStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenAmount != null" >
+        #{gardenAmount,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStatus != null" >
+        #{buildingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="parlorAmount != null" >
+        #{parlorAmount,jdbcType=INTEGER},
+      </if>
+      <if test="toiletAmount != null" >
+        #{toiletAmount,jdbcType=INTEGER},
+      </if>
+      <if test="houseNumber != null" >
+        #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="terraceAmount != null" >
+        #{terraceAmount,jdbcType=INTEGER},
+      </if>
+      <if test="decorateType != null" >
+        #{decorateType,jdbcType=VARCHAR},
+      </if>
+      <if test="extentItem != null" >
+        #{extentItem,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.Building" resultType="java.lang.Integer" >
+    select count(*) from t_building
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.Building" >
+    update t_building
+    <set >
+      <if test="buildingNumber != null" >
+        BUILDING_NUMBER = #{buildingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null" >
+        BUILDING_CODE = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bussnessCode != null" >
+        BUSSNESS_CODE = #{bussnessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        FLOOR = #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="totalFloor != null" >
+        TOTAL_FLOOR = #{totalFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingCertificate != null" >
+        BUILDING_CERTIFICATE = #{buildingCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null" >
+        BUILDING_TYPE = #{buildingType,jdbcType=VARCHAR},
+      </if>
+      <if test="elevator != null" >
+        ELEVATOR = #{elevator,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingArea != null" >
+        BUILDING_AREA = #{buildingArea,jdbcType=REAL},
+      </if>
+      <if test="useArea != null" >
+        USE_AREA = #{useArea,jdbcType=REAL},
+      </if>
+      <if test="heating != null" >
+        HEATING = #{heating,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null" >
+        ORIENTATION = #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="executiveAddress != null" >
+        EXECUTIVE_ADDRESS = #{executiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cookroomAmount != null" >
+        COOKROOM_AMOUNT = #{cookroomAmount,jdbcType=INTEGER},
+      </if>
+      <if test="provideCode != null" >
+        PROVIDE_CODE = #{provideCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyAddress != null" >
+        PROPERTY_ADDRESS = #{propertyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingLevel != null" >
+        BUILDING_LEVEL = #{buildingLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="balconyAmount != null" >
+        BALCONY_AMOUNT = #{balconyAmount,jdbcType=INTEGER},
+      </if>
+      <if test="bedroomAmount != null" >
+        BEDROOM_AMOUNT = #{bedroomAmount,jdbcType=INTEGER},
+      </if>
+      <if test="buildingFeature != null" >
+        BUILDING_FEATURE = #{buildingFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStructure != null" >
+        BUILDING_STRUCTURE = #{buildingStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenAmount != null" >
+        GARDEN_AMOUNT = #{gardenAmount,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null" >
+        DISTRICT_CODE = #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStatus != null" >
+        BUILDING_STATUS = #{buildingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="parlorAmount != null" >
+        PARLOR_AMOUNT = #{parlorAmount,jdbcType=INTEGER},
+      </if>
+      <if test="toiletAmount != null" >
+        TOILET_AMOUNT = #{toiletAmount,jdbcType=INTEGER},
+      </if>
+      <if test="houseNumber != null" >
+        HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="terraceAmount != null" >
+        TERRACE_AMOUNT = #{terraceAmount,jdbcType=INTEGER},
+      </if>
+      <if test="decorateType != null" >
+        DECORATE_TYPE = #{decorateType,jdbcType=VARCHAR},
+      </if>
+      <if test="extentItem != null" >
+        EXTENT_ITEM = #{extentItem,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where BUILDING_ID = #{buildingId,jdbcType=INTEGER}
+  </update>
+</mapper>

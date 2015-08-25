@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ziroom.mapper.AreaMapper" >
+  <resultMap id="Area" type="cn.ziroom.mapper.Area" >
+    <id column="AREA_ID" property="areaId" jdbcType="INTEGER" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CODE" property="businessCode" jdbcType="VARCHAR" />
+    <result column="SUBWAY_CODE" property="subwayCode" jdbcType="VARCHAR" />
+    <result column="SUBWAY_STATION_CODE" property="subwayStationCode" jdbcType="VARCHAR" />
+    <result column="CIRCLE_CODE" property="circleCode" jdbcType="VARCHAR" />
+    <result column="AREA_SPELLING_FULL" property="areaSpellingFull" jdbcType="VARCHAR" />
+    <result column="AREA_SPELLING_SHORT" property="areaSpellingShort" jdbcType="VARCHAR" />
+    <result column="AREA_ALIAS" property="areaAlias" jdbcType="VARCHAR" />
+    <result column="AREA_NAME" property="areaName" jdbcType="VARCHAR" />
+    <result column="FIRST_LETTER" property="firstLetter" jdbcType="CHAR" />
+    <result column="AREA_CODE" property="areaCode" jdbcType="VARCHAR" />
+    <result column="AREA_ADDRESS" property="areaAddress" jdbcType="VARCHAR" />
+    <result column="PROPERTIES_COMPANY" property="propertiesCompany" jdbcType="VARCHAR" />
+    <result column="PROPERTIES_TELPHONE" property="propertiesTelphone" jdbcType="VARCHAR" />
+    <result column="PROPERTIES_TYPE" property="propertiesType" jdbcType="VARCHAR" />
+    <result column="STEP_TO_STATION" property="stepToStation" jdbcType="VARCHAR" />
+    <result column="BUILDING_AMOUNT" property="buildingAmount" jdbcType="INTEGER" />
+    <result column="BUS_LINES" property="busLines" jdbcType="VARCHAR" />
+    <result column="BUILD_END_YEAR" property="buildEndYear" jdbcType="VARCHAR" />
+    <result column="POSITION" property="position" jdbcType="VARCHAR" />
+    <result column="GROUND_AREA" property="groundArea" jdbcType="REAL" />
+    <result column="CAR_NUM" property="carNum" jdbcType="INTEGER" />
+    <result column="CUBAGE_RATE" property="cubageRate" jdbcType="REAL" />
+    <result column="BUS_STATION" property="busStation" jdbcType="VARCHAR" />
+    <result column="HOUSE_AMOUNT" property="houseAmount" jdbcType="INTEGER" />
+    <result column="BUILD_BEGIN_YEAR" property="buildBeginYear" jdbcType="VARCHAR" />
+    <result column="BUILD_STYLE" property="buildStyle" jdbcType="VARCHAR" />
+    <result column="BUILD_SIZE" property="buildSize" jdbcType="REAL" />
+    <result column="VIRESCENCE_RATE" property="virescenceRate" jdbcType="REAL" />
+    <result column="BAIDU_LONGITUDE" property="baiduLongitude" jdbcType="REAL" />
+    <result column="BAIDU_LATITUDE" property="baiduLatitude" jdbcType="REAL" />
+    <result column="GOOGLE_LONGITUDE" property="googleLongitude" jdbcType="REAL" />
+    <result column="GOOGLE_LATITUDE" property="googleLatitude" jdbcType="REAL" />
+    <result column="AREA_DESC" property="areaDesc" jdbcType="LONGVARCHAR" />
+    <result column="AREA_RIM" property="areaRim" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="column" >
+    AREA_ID, CITY_CODE, BUSINESS_CODE, SUBWAY_CODE, SUBWAY_STATION_CODE, CIRCLE_CODE, 
+    AREA_SPELLING_FULL, AREA_SPELLING_SHORT, AREA_ALIAS, AREA_NAME, FIRST_LETTER, AREA_CODE, 
+    AREA_ADDRESS, PROPERTIES_COMPANY, PROPERTIES_TELPHONE, PROPERTIES_TYPE, STEP_TO_STATION, 
+    BUILDING_AMOUNT, BUS_LINES, BUILD_END_YEAR, POSITION, GROUND_AREA, CAR_NUM, CUBAGE_RATE, 
+    BUS_STATION, HOUSE_AMOUNT, BUILD_BEGIN_YEAR, BUILD_STYLE, BUILD_SIZE, VIRESCENCE_RATE, 
+    BAIDU_LONGITUDE, BAIDU_LATITUDE, GOOGLE_LONGITUDE, GOOGLE_LATITUDE
+  </sql>
+  <sql id="blob_column" >
+    AREA_DESC, AREA_RIM
+  </sql>
+  <select id="selectList" resultMap="Area" parameterType="cn.ziroom.mapper.Area" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="column" />
+    from t_area
+  </select>
+  <select id="selectById" resultMap="Area" parameterType="java.lang.Integer" >
+    select 
+    <include refid="column" />
+    ,
+    <include refid="blob_column" />
+    from t_area
+    where AREA_ID = #{areaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_area
+    where AREA_ID = #{areaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ziroom.mapper.Area" useGeneratedKeys="true" keyProperty="areaId" >
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="areaId != null" >
+        AREA_ID,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="businessCode != null" >
+        BUSINESS_CODE,
+      </if>
+      <if test="subwayCode != null" >
+        SUBWAY_CODE,
+      </if>
+      <if test="subwayStationCode != null" >
+        SUBWAY_STATION_CODE,
+      </if>
+      <if test="circleCode != null" >
+        CIRCLE_CODE,
+      </if>
+      <if test="areaSpellingFull != null" >
+        AREA_SPELLING_FULL,
+      </if>
+      <if test="areaSpellingShort != null" >
+        AREA_SPELLING_SHORT,
+      </if>
+      <if test="areaAlias != null" >
+        AREA_ALIAS,
+      </if>
+      <if test="areaName != null" >
+        AREA_NAME,
+      </if>
+      <if test="firstLetter != null" >
+        FIRST_LETTER,
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE,
+      </if>
+      <if test="areaAddress != null" >
+        AREA_ADDRESS,
+      </if>
+      <if test="propertiesCompany != null" >
+        PROPERTIES_COMPANY,
+      </if>
+      <if test="propertiesTelphone != null" >
+        PROPERTIES_TELPHONE,
+      </if>
+      <if test="propertiesType != null" >
+        PROPERTIES_TYPE,
+      </if>
+      <if test="stepToStation != null" >
+        STEP_TO_STATION,
+      </if>
+      <if test="buildingAmount != null" >
+        BUILDING_AMOUNT,
+      </if>
+      <if test="busLines != null" >
+        BUS_LINES,
+      </if>
+      <if test="buildEndYear != null" >
+        BUILD_END_YEAR,
+      </if>
+      <if test="position != null" >
+        POSITION,
+      </if>
+      <if test="groundArea != null" >
+        GROUND_AREA,
+      </if>
+      <if test="carNum != null" >
+        CAR_NUM,
+      </if>
+      <if test="cubageRate != null" >
+        CUBAGE_RATE,
+      </if>
+      <if test="busStation != null" >
+        BUS_STATION,
+      </if>
+      <if test="houseAmount != null" >
+        HOUSE_AMOUNT,
+      </if>
+      <if test="buildBeginYear != null" >
+        BUILD_BEGIN_YEAR,
+      </if>
+      <if test="buildStyle != null" >
+        BUILD_STYLE,
+      </if>
+      <if test="buildSize != null" >
+        BUILD_SIZE,
+      </if>
+      <if test="virescenceRate != null" >
+        VIRESCENCE_RATE,
+      </if>
+      <if test="baiduLongitude != null" >
+        BAIDU_LONGITUDE,
+      </if>
+      <if test="baiduLatitude != null" >
+        BAIDU_LATITUDE,
+      </if>
+      <if test="googleLongitude != null" >
+        GOOGLE_LONGITUDE,
+      </if>
+      <if test="googleLatitude != null" >
+        GOOGLE_LATITUDE,
+      </if>
+      <if test="areaDesc != null" >
+        AREA_DESC,
+      </if>
+      <if test="areaRim != null" >
+        AREA_RIM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null" >
+        #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayCode != null" >
+        #{subwayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayStationCode != null" >
+        #{subwayStationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="circleCode != null" >
+        #{circleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpellingFull != null" >
+        #{areaSpellingFull,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpellingShort != null" >
+        #{areaSpellingShort,jdbcType=VARCHAR},
+      </if>
+      <if test="areaAlias != null" >
+        #{areaAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        #{firstLetter,jdbcType=CHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaAddress != null" >
+        #{areaAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesCompany != null" >
+        #{propertiesCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesTelphone != null" >
+        #{propertiesTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesType != null" >
+        #{propertiesType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepToStation != null" >
+        #{stepToStation,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingAmount != null" >
+        #{buildingAmount,jdbcType=INTEGER},
+      </if>
+      <if test="busLines != null" >
+        #{busLines,jdbcType=VARCHAR},
+      </if>
+      <if test="buildEndYear != null" >
+        #{buildEndYear,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="groundArea != null" >
+        #{groundArea,jdbcType=REAL},
+      </if>
+      <if test="carNum != null" >
+        #{carNum,jdbcType=INTEGER},
+      </if>
+      <if test="cubageRate != null" >
+        #{cubageRate,jdbcType=REAL},
+      </if>
+      <if test="busStation != null" >
+        #{busStation,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAmount != null" >
+        #{houseAmount,jdbcType=INTEGER},
+      </if>
+      <if test="buildBeginYear != null" >
+        #{buildBeginYear,jdbcType=VARCHAR},
+      </if>
+      <if test="buildStyle != null" >
+        #{buildStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="buildSize != null" >
+        #{buildSize,jdbcType=REAL},
+      </if>
+      <if test="virescenceRate != null" >
+        #{virescenceRate,jdbcType=REAL},
+      </if>
+      <if test="baiduLongitude != null" >
+        #{baiduLongitude,jdbcType=REAL},
+      </if>
+      <if test="baiduLatitude != null" >
+        #{baiduLatitude,jdbcType=REAL},
+      </if>
+      <if test="googleLongitude != null" >
+        #{googleLongitude,jdbcType=REAL},
+      </if>
+      <if test="googleLatitude != null" >
+        #{googleLatitude,jdbcType=REAL},
+      </if>
+      <if test="areaDesc != null" >
+        #{areaDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="areaRim != null" >
+        #{areaRim,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="count" parameterType="cn.ziroom.mapper.Area" resultType="java.lang.Integer" >
+    select count(*) from t_area
+  </select>
+  <update id="update" parameterType="cn.ziroom.mapper.Area" >
+    update t_area
+    <set >
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null" >
+        BUSINESS_CODE = #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayCode != null" >
+        SUBWAY_CODE = #{subwayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayStationCode != null" >
+        SUBWAY_STATION_CODE = #{subwayStationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="circleCode != null" >
+        CIRCLE_CODE = #{circleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpellingFull != null" >
+        AREA_SPELLING_FULL = #{areaSpellingFull,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpellingShort != null" >
+        AREA_SPELLING_SHORT = #{areaSpellingShort,jdbcType=VARCHAR},
+      </if>
+      <if test="areaAlias != null" >
+        AREA_ALIAS = #{areaAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        AREA_NAME = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        FIRST_LETTER = #{firstLetter,jdbcType=CHAR},
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaAddress != null" >
+        AREA_ADDRESS = #{areaAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesCompany != null" >
+        PROPERTIES_COMPANY = #{propertiesCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesTelphone != null" >
+        PROPERTIES_TELPHONE = #{propertiesTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="propertiesType != null" >
+        PROPERTIES_TYPE = #{propertiesType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepToStation != null" >
+        STEP_TO_STATION = #{stepToStation,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingAmount != null" >
+        BUILDING_AMOUNT = #{buildingAmount,jdbcType=INTEGER},
+      </if>
+      <if test="busLines != null" >
+        BUS_LINES = #{busLines,jdbcType=VARCHAR},
+      </if>
+      <if test="buildEndYear != null" >
+        BUILD_END_YEAR = #{buildEndYear,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        POSITION = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="groundArea != null" >
+        GROUND_AREA = #{groundArea,jdbcType=REAL},
+      </if>
+      <if test="carNum != null" >
+        CAR_NUM = #{carNum,jdbcType=INTEGER},
+      </if>
+      <if test="cubageRate != null" >
+        CUBAGE_RATE = #{cubageRate,jdbcType=REAL},
+      </if>
+      <if test="busStation != null" >
+        BUS_STATION = #{busStation,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAmount != null" >
+        HOUSE_AMOUNT = #{houseAmount,jdbcType=INTEGER},
+      </if>
+      <if test="buildBeginYear != null" >
+        BUILD_BEGIN_YEAR = #{buildBeginYear,jdbcType=VARCHAR},
+      </if>
+      <if test="buildStyle != null" >
+        BUILD_STYLE = #{buildStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="buildSize != null" >
+        BUILD_SIZE = #{buildSize,jdbcType=REAL},
+      </if>
+      <if test="virescenceRate != null" >
+        VIRESCENCE_RATE = #{virescenceRate,jdbcType=REAL},
+      </if>
+      <if test="baiduLongitude != null" >
+        BAIDU_LONGITUDE = #{baiduLongitude,jdbcType=REAL},
+      </if>
+      <if test="baiduLatitude != null" >
+        BAIDU_LATITUDE = #{baiduLatitude,jdbcType=REAL},
+      </if>
+      <if test="googleLongitude != null" >
+        GOOGLE_LONGITUDE = #{googleLongitude,jdbcType=REAL},
+      </if>
+      <if test="googleLatitude != null" >
+        GOOGLE_LATITUDE = #{googleLatitude,jdbcType=REAL},
+      </if>
+      <if test="areaDesc != null" >
+        AREA_DESC = #{areaDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="areaRim != null" >
+        AREA_RIM = #{areaRim,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where AREA_ID = #{areaId,jdbcType=INTEGER}
+  </update>
+</mapper>

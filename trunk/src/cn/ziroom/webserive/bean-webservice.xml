@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="areaService" class="cn.ziroom.webserive.service.AreaService">
+		<property name="areaMapper" ref="areaMapper"/>
+	</bean>
+	<bean id="bussinessService" class="cn.ziroom.webserive.service.BussinessService">
+		<property name="bussinessMapper" ref="bussinessMapper"/>
+	</bean>
+	<bean id="circleService" class="cn.ziroom.webserive.service.CircleService">
+		<property name="circleMapper" ref="circleMapper"/>
+	</bean>
+	<bean id="cityService" class="cn.ziroom.webserive.service.CityService">
+		<property name="cityMapper" ref="cityMapper"/>
+	</bean>
+	<bean id="districtService" class="cn.ziroom.webserive.service.DistrictService">
+		<property name="districtMapper" ref="districtMapper"/>
+	</bean>
+	<bean id="provinceService" class="cn.ziroom.webserive.service.ProvinceService">
+		<property name="provinceMapper" ref="provinceMapper"/>
+	</bean>
+	<bean id="subwayService" class="cn.ziroom.webserive.service.SubwayService">
+		<property name="subwayMapper" ref="subwayMapper"/>
+	</bean>
+	<bean id="subwayStationService" class="cn.ziroom.webserive.service.SubwayStationService">
+		<property name="subwayStationMapper" ref="subwayStationMapper"/>
+	</bean>
+	<!-- 提供webservice wsdl url address -->
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter">
+		<property name="baseAddress" value="http://172.16.18.50:9081/" />
+	</bean>
+	<!-- 小区周边区域外部访问接口使用webservice方式实现 -->
+	<bean id="areaWebService" class="cn.ziroom.webserive.AreaWebService">
+		<property name="areaService" ref="areaService"/>
+	</bean>
+	<bean id="bussinessWebService" class="cn.ziroom.webserive.BussinessWebService">
+		<property name="bussinessService" ref="bussinessService"/>
+	</bean>
+	<bean id="circleWebService" class="cn.ziroom.webserive.CircleWebService">
+		<property name="circleService" ref="circleService"/>
+	</bean>
+	<bean id="cityWebService" class="cn.ziroom.webserive.CityWebService">
+		<property name="cityService" ref="cityService"/>
+	</bean>
+	<bean id="districtWebService" class="cn.ziroom.webserive.DistrictWebService">
+		<property name="districtService" ref="districtService"/>
+	</bean>
+	<bean id="provinceWebService" class="cn.ziroom.webserive.ProvinceWebService">
+		<property name="provinceService" ref="provinceService"/>
+	</bean>
+	<bean id="subwayStationWebService" class="cn.ziroom.webserive.SubwayStationWebService">
+		<property name="subwayStationService" ref="subwayStationService"/>
+	</bean>
+	<bean id="subwayWebService" class="cn.ziroom.webserive.SubwayWebService">
+		<property name="subwayService" ref="subwayService"/>
+	</bean>
+</beans>
